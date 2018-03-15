@@ -1214,7 +1214,7 @@ export class InfluxDB {
    *   console.log(rawData)
    * })
    */
-  public queryRaw(query: string | string[], options: IQueryOptions = {}): Promise<any> {
+  public queryRaw(method: string, query: string | string[], options: IQueryOptions = {}): Promise<any> {
     const { database = this.defaultDB(), retentionPolicy } = options;
 
     if (query instanceof Array) {
@@ -1227,7 +1227,7 @@ export class InfluxDB {
         epoch: options.precision,
         q: query,
         rp: retentionPolicy,
-      }),
+      }, method),
     );
   }
 
